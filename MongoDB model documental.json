@@ -1,0 +1,1103 @@
+{
+  "modelName": "New Model",
+  "collections": [
+    {
+      "collectionName": "registrosModificaciones",
+      "type": "object",
+      "properties": [
+        {
+          "name": "_id",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "color": "#555555",
+          "error": {},
+          "code": "",
+          "required": true,
+          "description": "Identificador único del registro de auditoría (ObjectId)",
+          "GUID": "b95578fa-e51f-4b86-bd4a-22d79a4ad8d3"
+        },
+        {
+          "name": "idDocumentoModificado",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "color": "#555555",
+          "error": {},
+          "code": "",
+          "required": true,
+          "description": "ObjectId del documento afectado (reserva o sala)",
+          "GUID": "1e9baf60-6223-46dc-9871-9638d117fe93"
+        },
+        {
+          "code": "",
+          "name": "coleccion",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "enum": [
+            "reservas",
+            "salas"
+          ],
+          "description": "Colección a la que pertenece el documento modificado",
+          "GUID": "99ff7d5c-1aa9-4654-a058-e09fe0002426",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "tipo",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "enum": [
+            "cancelacion",
+            "modificacion",
+            "cambioEstadoSala"
+          ],
+          "description": "Tipo de evento registrado",
+          "GUID": "5ac92e0c-41df-41a5-b9a3-b4cddb00e715",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "fecha",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "format": "date-time",
+          "description": "Fecha y hora exacta de la modificación",
+          "GUID": "206d1df4-2a3d-4544-a76f-29775bcf83c1",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "descripcion",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "description": "Descripción textual del cambio realizado",
+          "GUID": "05c017d4-ed23-4c9a-b37e-6ff7079137ff",
+          "required": true
+        },
+        {
+          "name": "idUsuario",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "color": "#555555",
+          "error": {},
+          "code": "",
+          "required": true,
+          "description": "Referencia al usuario que realizó la acción (ObjectId)",
+          "GUID": "17b57f20-1c02-4195-8b8c-6f9147ffb614",
+          "parentRelationship": "9af3e960-197b-4a99-a7d6-f744f115e29a",
+          "relationshipType": "Foreign Key"
+        },
+        {
+          "code": "",
+          "name": "datosModificacion",
+          "isActivated": true,
+          "type": "document",
+          "properties": [
+            {
+              "code": "",
+              "name": "campoModificado",
+              "isActivated": true,
+              "type": "string",
+              "color": "#555555",
+              "description": "Nombre del campo que fue modificado",
+              "GUID": "c1a53fd2-0516-4a89-98dd-9c97b9f45049",
+              "required": true
+            },
+            {
+              "code": "",
+              "name": "valorAnterior",
+              "isActivated": true,
+              "type": "string",
+              "color": "#555555",
+              "description": "Valor que tenía el campo antes del cambio",
+              "GUID": "2751284a-3b3b-4a5b-87a6-be95e6312507",
+              "required": true
+            },
+            {
+              "code": "",
+              "name": "valorNuevo",
+              "isActivated": true,
+              "type": "string",
+              "color": "#555555",
+              "description": "Nuevo valor asignado al campo",
+              "GUID": "0d6ccfdb-c4fa-41ac-9779-bd73525b8168",
+              "required": true
+            }
+          ],
+          "additionalProperties": true,
+          "color": "#555555",
+          "description": "Subdocumento con los valores anteriores y nuevos del campo modificado",
+          "GUID": "3e84ba1f-cf3e-4442-977d-2c94b8c62992",
+          "required": true
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "GUID": "b90ba07d-0b68-4cf1-a48e-7fab60040f30",
+        "properties": []
+      },
+      "isActivated": true,
+      "additionalProperties": true,
+      "validationLevel": "Off",
+      "validationAction": "Warn",
+      "storageEngineName": "WiredTiger",
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "GUID": "eb4fb652-b8f2-4443-a936-a65d9e166cc4",
+      "code": "registrosModificaciones",
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "bucketId": "4aeb55e9-dee0-421d-8209-25047b28977d",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
+    },
+    {
+      "collectionName": "reservas",
+      "type": "object",
+      "properties": [
+        {
+          "name": "_id",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "color": "#555555",
+          "error": {},
+          "code": "",
+          "required": true,
+          "description": "Identificador único generado por MongoDB (ObjectId)",
+          "GUID": "12a24e1c-39ff-47d7-a656-5b31d0ce3f00"
+        },
+        {
+          "code": "",
+          "name": "fechaInicio",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "format": "date-time",
+          "description": "Fecha y hora de inicio de la reserva (ISO 8601)",
+          "GUID": "354935fe-c574-4bee-b809-9e2a1b239155",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "fechaFin",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "format": "date-time",
+          "description": "Fecha y hora de fin de la reserva (ISO 8601)",
+          "GUID": "115bbc02-3bad-486f-8e42-bd199e522e64",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "estado",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "enum": [
+            "Activa",
+            "Cancelada",
+            "Ajustada"
+          ],
+          "description": "Estado actual de la reserva",
+          "GUID": "55093703-5929-4e05-b075-bbd8642b351c",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "tipoEvento",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "enum": [
+            "Academica",
+            "Administrativa"
+          ],
+          "description": "Categoría del evento",
+          "GUID": "bcabf645-b482-4aeb-a855-cf18ce7d239a",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "descripcion",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "description": "Descripción opcional del motivo de la reserva",
+          "GUID": "01d7f052-3693-46a8-b1bf-68a65eb86b16",
+          "required": false
+        },
+        {
+          "code": "",
+          "name": "fechaCreacion",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "format": "date-time",
+          "description": "Timestamp de creación del documento",
+          "GUID": "a8ef8684-b6ab-465b-a636-9b81115e4232",
+          "required": true
+        },
+        {
+          "name": "idSala",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "color": "#555555",
+          "error": {},
+          "code": "",
+          "required": true,
+          "description": "Referencia a la colección salas (ObjectId)",
+          "GUID": "b1813fce-458e-4732-a7ba-829dff14ac3f",
+          "foreignCollection": "5270b583-ac8a-4805-94ba-d7739b7753c4",
+          "foreignField": [
+            "5270b583-ac8a-4805-94ba-d7739b7753c4",
+            "688fcb5d-cc95-481d-a978-b9fe8d850a31"
+          ],
+          "relationshipType": "Foreign Key",
+          "parentRelationship": "d90bc334-6533-4cf7-b2bc-35efa7ea4031"
+        },
+        {
+          "name": "idUsuario",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "color": "#555555",
+          "error": {},
+          "code": "",
+          "required": true,
+          "description": "Referencia a la colección usuarios (ObjectId)",
+          "GUID": "5835632b-4dc1-465b-abbe-ad9ff96061e4",
+          "foreignCollection": "05788d2a-ca1e-4a08-9d39-f24f30cf18ce",
+          "foreignField": [
+            "05788d2a-ca1e-4a08-9d39-f24f30cf18ce",
+            "63251046-cb50-474b-8186-ac1c5a4db0ce"
+          ],
+          "relationshipType": "Foreign Key",
+          "parentRelationship": "aa7f1da0-c25a-43f1-9943-245438029f3a"
+        },
+        {
+          "code": "",
+          "name": "ultimaModificacion",
+          "isActivated": true,
+          "type": "document",
+          "properties": [
+            {
+              "name": "idUsuarioResponsable",
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "objectId",
+              "color": "#555555",
+              "error": {},
+              "code": "",
+              "required": true,
+              "description": "Referencia al usuario que realizó el último cambio (ObjectId)",
+              "GUID": "197ba0b5-5d50-4c96-a1f5-79a487ec5728"
+            },
+            {
+              "code": "",
+              "name": "fecha",
+              "isActivated": true,
+              "type": "string",
+              "color": "#555555",
+              "format": "date-time",
+              "description": "Fecha y hora del último cambio",
+              "GUID": "e34341f9-2b56-4d06-a9ce-149563566484",
+              "required": true
+            }
+          ],
+          "additionalProperties": true,
+          "color": "#555555",
+          "description": "Subdocumento embebido con datos del último cambio sobre esta reserva",
+          "GUID": "3fd84447-97d7-4e6f-a08c-ff3e1d9366c4",
+          "required": false,
+          "error": {}
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "GUID": "6629de1a-8a54-44f3-bc71-b579791b3b7d",
+        "properties": []
+      },
+      "isActivated": true,
+      "additionalProperties": true,
+      "validationLevel": "Off",
+      "validationAction": "Warn",
+      "storageEngineName": "WiredTiger",
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "GUID": "b3b9e1b4-882e-4412-83d9-c186c8b9f341",
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "bucketId": "4aeb55e9-dee0-421d-8209-25047b28977d",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
+    },
+    {
+      "collectionName": "usuarios",
+      "type": "object",
+      "properties": [
+        {
+          "name": "_id",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "color": "#555555",
+          "code": "",
+          "required": true,
+          "description": "Identificador único generado por MongoDB (ObjectId)",
+          "GUID": "63251046-cb50-474b-8186-ac1c5a4db0ce",
+          "physicalOnly": false,
+          "primaryKey": true,
+          "error": {},
+          "childRelationships": [
+            "9af3e960-197b-4a99-a7d6-f744f115e29a",
+            "aa7f1da0-c25a-43f1-9943-245438029f3a"
+          ]
+        },
+        {
+          "code": "",
+          "name": "codigoUsuario",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "description": "Código institucional del usuario. Ej: USR-001",
+          "GUID": "765b0ed7-56a6-43fa-9dc8-b790288096b8",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "nombreCompleto",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "description": "Nombre completo del usuario",
+          "GUID": "8397c2d1-3fa0-41ca-b828-9b015b3bcd83",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "email",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "description": "Correo institucional único",
+          "GUID": "c5f60ba8-b014-401e-ab1e-f90d41e62d1c",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "rol",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "enum": [
+            "Docente",
+            "Secretaria"
+          ],
+          "description": "Rol del usuario en el sistema",
+          "GUID": "2bb5f5bd-eee6-4903-9656-57a29813bd02",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "estado",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "enum": [
+            "Activo",
+            "Inactivo"
+          ],
+          "description": "Estado de la cuenta del usuario",
+          "GUID": "d35227c4-97fa-4c5f-9ad2-7477d9ad53ee",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "idFacultad",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "description": "Referencia a la colección facultades (ObjectId)",
+          "GUID": "6ff61d2f-202d-4e3c-9521-8a108690f64e",
+          "required": true,
+          "foreignCollection": "27774a02-144c-4c64-96f7-a4c600da808a",
+          "error": {},
+          "foreignField": [
+            "27774a02-144c-4c64-96f7-a4c600da808a",
+            "279604c1-ee24-4918-82cf-603b20eae426"
+          ],
+          "relationshipType": "Foreign Key",
+          "parentRelationship": "2af92e17-3f10-49d1-b0ff-4d82fdbbe1b6"
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "GUID": "90090a4f-75ef-4244-8ae9-bbb27584ec76",
+        "properties": []
+      },
+      "isActivated": true,
+      "additionalProperties": true,
+      "validationLevel": "Off",
+      "validationAction": "Warn",
+      "storageEngineName": "WiredTiger",
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "GUID": "05788d2a-ca1e-4a08-9d39-f24f30cf18ce",
+      "code": "usuarios",
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "bucketId": "4aeb55e9-dee0-421d-8209-25047b28977d",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
+    },
+    {
+      "collectionName": "salas",
+      "type": "object",
+      "properties": [
+        {
+          "code": "",
+          "name": "_id",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "description": "Identificador único generado por MongoDB (ObjectId)",
+          "GUID": "688fcb5d-cc95-481d-a978-b9fe8d850a31",
+          "required": true,
+          "childRelationships": [
+            "d90bc334-6533-4cf7-b2bc-35efa7ea4031"
+          ]
+        },
+        {
+          "code": "",
+          "name": "codigoSala",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "description": "Código identificador de la sala. Ej: S001",
+          "GUID": "a56cc7b1-a26b-4c06-9201-052b6d2aee45",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "nombre",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "description": "Nombre descriptivo de la sala",
+          "GUID": "976d22d5-ebf0-4a91-aa98-26ef3a53ffb7",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "estado",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "enum": [
+            "Habilitada",
+            "Deshabilitada"
+          ],
+          "description": "Estado operativo de la sala",
+          "GUID": "f1446826-c4ac-4793-8622-6ea8a3c1978c",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "observaciones",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "description": "Notas relevantes sobre la sala",
+          "GUID": "c9caf375-4525-4e79-b759-e43c6fb4548b",
+          "required": false
+        },
+        {
+          "code": "",
+          "name": "idFacultad",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "description": "Referencia a la colección facultades (ObjectId)",
+          "GUID": "739a5b56-d997-4570-9666-7cc6022f21bb",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "recursos",
+          "isActivated": true,
+          "type": "array",
+          "properties": [
+            {
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "document",
+              "properties": [
+                {
+                  "code": "",
+                  "name": "numRecurso",
+                  "isActivated": true,
+                  "type": "string",
+                  "color": "#555555",
+                  "description": "Número o código del recurso",
+                  "GUID": "dabdfd11-c96a-42e8-82d7-a57c9c2bbf41",
+                  "required": true
+                },
+                {
+                  "code": "",
+                  "name": "tipo",
+                  "isActivated": true,
+                  "type": "string",
+                  "color": "#555555",
+                  "enum": [
+                    "Proyector",
+                    "Mesa",
+                    "Televisor",
+                    "Otro"
+                  ],
+                  "description": "Categoría del recurso",
+                  "GUID": "0cb084b4-6caa-4ec8-9846-c6cfe335741f",
+                  "required": true
+                },
+                {
+                  "code": "",
+                  "name": "nombre",
+                  "isActivated": true,
+                  "type": "string",
+                  "color": "#555555",
+                  "description": "Nombre descriptivo del recurso",
+                  "GUID": "e23d881b-a12a-4843-946d-809b37f0b892",
+                  "required": true
+                }
+              ],
+              "additionalProperties": true,
+              "color": "#555555",
+              "GUID": "c933564b-3691-4b7a-a4e4-ca6735c5ab3d",
+              "arrayItem": true
+            }
+          ],
+          "additionalItems": true,
+          "color": "#555555",
+          "description": "Lista de recursos disponibles en la sala (embebidos)",
+          "GUID": "8646ffd0-31e0-46b5-afac-30a5ef0951d6",
+          "required": false
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "GUID": "ad8945e6-ee6f-4172-b188-7a4e5635d09b",
+        "properties": []
+      },
+      "isActivated": true,
+      "additionalProperties": true,
+      "validationLevel": "Off",
+      "validationAction": "Warn",
+      "storageEngineName": "WiredTiger",
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "GUID": "5270b583-ac8a-4805-94ba-d7739b7753c4",
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "bucketId": "4aeb55e9-dee0-421d-8209-25047b28977d",
+      "hackoladeMeta": {
+        "namingConvention": "",
+        "validationErrors": {}
+      }
+    },
+    {
+      "collectionName": "facultades",
+      "type": "object",
+      "properties": [
+        {
+          "name": "_id",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "color": "#555555",
+          "code": "",
+          "required": true,
+          "description": "Identificador único generado por MongoDB (ObjectId)",
+          "GUID": "279604c1-ee24-4918-82cf-603b20eae426",
+          "primaryKey": true,
+          "error": {},
+          "childRelationships": [
+            "2af92e17-3f10-49d1-b0ff-4d82fdbbe1b6"
+          ]
+        },
+        {
+          "code": "",
+          "name": "nombre",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "description": "Nombre de la facultad",
+          "GUID": "e56cf375-c231-4a22-a91c-4356632f7313",
+          "required": true
+        },
+        {
+          "code": "",
+          "name": "descripcion",
+          "isActivated": true,
+          "type": "string",
+          "color": "#555555",
+          "description": "Descripción general de la facultad",
+          "GUID": "3b09c3b4-a4c4-4004-a7ae-f85ba33044ac",
+          "required": false
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "GUID": "1227de62-4c97-495f-97e7-bc42578fc8bf",
+        "properties": []
+      },
+      "isActivated": true,
+      "additionalProperties": true,
+      "validationLevel": "Off",
+      "validationAction": "Warn",
+      "storageEngineName": "WiredTiger",
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "GUID": "27774a02-144c-4c64-96f7-a4c600da808a",
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "bucketId": "4aeb55e9-dee0-421d-8209-25047b28977d",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
+    }
+  ],
+  "buckets": [
+    {
+      "name": "base_datos_docu",
+      "type": "bucket",
+      "collectionIds": [
+        "eb4fb652-b8f2-4443-a936-a65d9e166cc4",
+        "b3b9e1b4-882e-4412-83d9-c186c8b9f341",
+        "05788d2a-ca1e-4a08-9d39-f24f30cf18ce",
+        "5270b583-ac8a-4805-94ba-d7739b7753c4",
+        "27774a02-144c-4c64-96f7-a4c600da808a"
+      ],
+      "backgroundColor": {
+        "r": 206,
+        "g": 147,
+        "b": 216,
+        "a": 1
+      },
+      "show": true,
+      "isActivated": true,
+      "GUID": "4aeb55e9-dee0-421d-8209-25047b28977d",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
+    }
+  ],
+  "views": [],
+  "relationships": [
+    {
+      "name": "fk_facultades._id_to_usuarios.idFacultad",
+      "relationshipType": "Foreign Key",
+      "parentField": [
+        [
+          "27774a02-144c-4c64-96f7-a4c600da808a",
+          "279604c1-ee24-4918-82cf-603b20eae426"
+        ]
+      ],
+      "parentCardinality": "1",
+      "childField": [
+        [
+          "05788d2a-ca1e-4a08-9d39-f24f30cf18ce",
+          "6ff61d2f-202d-4e3c-9521-8a108690f64e"
+        ]
+      ],
+      "isActivated": true,
+      "childCardinality": "1",
+      "GUID": "2af92e17-3f10-49d1-b0ff-4d82fdbbe1b6",
+      "parentCollection": "27774a02-144c-4c64-96f7-a4c600da808a",
+      "childCollection": "05788d2a-ca1e-4a08-9d39-f24f30cf18ce",
+      "hackoladeStyles": {
+        "GUID": "75a6ade3-21ce-44d7-91ad-a0790e41262b",
+        "autoPositioning": true,
+        "type": "Orthogonal",
+        "thickness": 2,
+        "color": "#79c4ff",
+        "dataType": "",
+        "shape": [
+          {
+            "x": 1591.7378804960565,
+            "y": 1101.439684329201
+          },
+          {
+            "x": 1591.7378804960565,
+            "y": 1053.658399098088
+          },
+          {
+            "x": 1582.4859075535521,
+            "y": 1053.658399098088
+          },
+          {
+            "x": 1582.4859075535521,
+            "y": 1005.8771138669749
+          }
+        ],
+        "sides": [
+          "top",
+          "bottom"
+        ]
+      }
+    },
+    {
+      "name": "fk_usuarios._id_to_registrosModificaciones.idUsuario",
+      "relationshipType": "Foreign Key",
+      "parentField": [
+        [
+          "05788d2a-ca1e-4a08-9d39-f24f30cf18ce",
+          "63251046-cb50-474b-8186-ac1c5a4db0ce"
+        ]
+      ],
+      "parentCardinality": "1",
+      "childField": [
+        [
+          "eb4fb652-b8f2-4443-a936-a65d9e166cc4",
+          "17b57f20-1c02-4195-8b8c-6f9147ffb614"
+        ]
+      ],
+      "isActivated": true,
+      "childCardinality": "1",
+      "GUID": "9af3e960-197b-4a99-a7d6-f744f115e29a",
+      "parentCollection": "05788d2a-ca1e-4a08-9d39-f24f30cf18ce",
+      "childCollection": "eb4fb652-b8f2-4443-a936-a65d9e166cc4",
+      "hackoladeStyles": {
+        "GUID": "68765ba1-6357-4cf1-b902-e9fea315a5fd",
+        "autoPositioning": true,
+        "type": "Orthogonal",
+        "thickness": 2,
+        "color": "#79c4ff",
+        "dataType": "",
+        "shape": [
+          {
+            "x": 1545.5152198421629,
+            "y": 1351.0868094701245
+          },
+          {
+            "x": 1545.5152198421629,
+            "y": 1305.2632468996628
+          },
+          {
+            "x": 1591.7378804960565,
+            "y": 1305.2632468996628
+          },
+          {
+            "x": 1591.7378804960565,
+            "y": 1259.439684329201
+          }
+        ],
+        "sides": [
+          "top",
+          "bottom"
+        ]
+      }
+    },
+    {
+      "name": "fk_salas._id_to_reservas.idSala",
+      "relationshipType": "Foreign Key",
+      "parentField": [
+        [
+          "5270b583-ac8a-4805-94ba-d7739b7753c4",
+          "688fcb5d-cc95-481d-a978-b9fe8d850a31"
+        ]
+      ],
+      "parentCardinality": "1",
+      "childField": [
+        [
+          "b3b9e1b4-882e-4412-83d9-c186c8b9f341",
+          "b1813fce-458e-4732-a7ba-829dff14ac3f"
+        ]
+      ],
+      "isActivated": true,
+      "childCardinality": "1",
+      "GUID": "d90bc334-6533-4cf7-b2bc-35efa7ea4031",
+      "parentCollection": "5270b583-ac8a-4805-94ba-d7739b7753c4",
+      "childCollection": "b3b9e1b4-882e-4412-83d9-c186c8b9f341",
+      "hackoladeStyles": {
+        "GUID": "13d1afbd-71b2-450e-a80b-feb27b599c60",
+        "autoPositioning": true,
+        "type": "Orthogonal",
+        "thickness": 2,
+        "color": "#79c4ff",
+        "dataType": "",
+        "shape": [
+          {
+            "x": 2025.2395715896337,
+            "y": 1266.8568207440865
+          },
+          {
+            "x": 2025.2395715896337,
+            "y": 1208.691657271706
+          },
+          {
+            "x": 2012.2119503945862,
+            "y": 1208.691657271706
+          },
+          {
+            "x": 2012.2119503945862,
+            "y": 1150.5264937993256
+          }
+        ],
+        "sides": [
+          "top",
+          "bottom"
+        ]
+      }
+    },
+    {
+      "name": "fk_usuarios._id_to_reservas.idUsuario",
+      "relationshipType": "Foreign Key",
+      "parentField": [
+        [
+          "05788d2a-ca1e-4a08-9d39-f24f30cf18ce",
+          "63251046-cb50-474b-8186-ac1c5a4db0ce"
+        ]
+      ],
+      "parentCardinality": "1",
+      "childField": [
+        [
+          "b3b9e1b4-882e-4412-83d9-c186c8b9f341",
+          "5835632b-4dc1-465b-abbe-ad9ff96061e4"
+        ]
+      ],
+      "isActivated": true,
+      "childCardinality": "1",
+      "GUID": "aa7f1da0-c25a-43f1-9943-245438029f3a",
+      "parentCollection": "05788d2a-ca1e-4a08-9d39-f24f30cf18ce",
+      "childCollection": "b3b9e1b4-882e-4412-83d9-c186c8b9f341",
+      "hackoladeStyles": {
+        "GUID": "3f5f22cb-1c34-4b7c-9af8-553d2e79a850",
+        "autoPositioning": true,
+        "type": "Orthogonal",
+        "thickness": 2,
+        "color": "#79c4ff",
+        "dataType": "",
+        "shape": [
+          {
+            "x": 1861.7395715896337,
+            "y": 1390.8568207440865
+          },
+          {
+            "x": 1787.988726042845,
+            "y": 1390.8568207440865
+          },
+          {
+            "x": 1787.988726042845,
+            "y": 1180.439684329201
+          },
+          {
+            "x": 1714.2378804960565,
+            "y": 1180.439684329201
+          }
+        ],
+        "sides": [
+          "left",
+          "right"
+        ]
+      }
+    }
+  ],
+  "users": [],
+  "diagramViews": [],
+  "idToNameHashTable": {
+    "b95578fa-e51f-4b86-bd4a-22d79a4ad8d3": "_id",
+    "1e9baf60-6223-46dc-9871-9638d117fe93": "idDocumentoModificado",
+    "99ff7d5c-1aa9-4654-a058-e09fe0002426": "coleccion",
+    "5ac92e0c-41df-41a5-b9a3-b4cddb00e715": "tipo",
+    "206d1df4-2a3d-4544-a76f-29775bcf83c1": "fecha",
+    "05c017d4-ed23-4c9a-b37e-6ff7079137ff": "descripcion",
+    "17b57f20-1c02-4195-8b8c-6f9147ffb614": "idUsuario",
+    "3e84ba1f-cf3e-4442-977d-2c94b8c62992": "datosModificacion",
+    "c1a53fd2-0516-4a89-98dd-9c97b9f45049": "campoModificado",
+    "2751284a-3b3b-4a5b-87a6-be95e6312507": "valorAnterior",
+    "0d6ccfdb-c4fa-41ac-9779-bd73525b8168": "valorNuevo",
+    "eb4fb652-b8f2-4443-a936-a65d9e166cc4": "registrosModificaciones",
+    "12a24e1c-39ff-47d7-a656-5b31d0ce3f00": "_id",
+    "354935fe-c574-4bee-b809-9e2a1b239155": "fechaInicio",
+    "115bbc02-3bad-486f-8e42-bd199e522e64": "fechaFin",
+    "55093703-5929-4e05-b075-bbd8642b351c": "estado",
+    "bcabf645-b482-4aeb-a855-cf18ce7d239a": "tipoEvento",
+    "01d7f052-3693-46a8-b1bf-68a65eb86b16": "descripcion",
+    "a8ef8684-b6ab-465b-a636-9b81115e4232": "fechaCreacion",
+    "b1813fce-458e-4732-a7ba-829dff14ac3f": "idSala",
+    "5835632b-4dc1-465b-abbe-ad9ff96061e4": "idUsuario",
+    "3fd84447-97d7-4e6f-a08c-ff3e1d9366c4": "ultimaModificacion",
+    "197ba0b5-5d50-4c96-a1f5-79a487ec5728": "idUsuarioResponsable",
+    "e34341f9-2b56-4d06-a9ce-149563566484": "fecha",
+    "b3b9e1b4-882e-4412-83d9-c186c8b9f341": "reservas",
+    "63251046-cb50-474b-8186-ac1c5a4db0ce": "_id",
+    "765b0ed7-56a6-43fa-9dc8-b790288096b8": "codigoUsuario",
+    "8397c2d1-3fa0-41ca-b828-9b015b3bcd83": "nombreCompleto",
+    "c5f60ba8-b014-401e-ab1e-f90d41e62d1c": "email",
+    "2bb5f5bd-eee6-4903-9656-57a29813bd02": "rol",
+    "d35227c4-97fa-4c5f-9ad2-7477d9ad53ee": "estado",
+    "6ff61d2f-202d-4e3c-9521-8a108690f64e": "idFacultad",
+    "05788d2a-ca1e-4a08-9d39-f24f30cf18ce": "usuarios",
+    "688fcb5d-cc95-481d-a978-b9fe8d850a31": "_id",
+    "a56cc7b1-a26b-4c06-9201-052b6d2aee45": "codigoSala",
+    "976d22d5-ebf0-4a91-aa98-26ef3a53ffb7": "nombre",
+    "f1446826-c4ac-4793-8622-6ea8a3c1978c": "estado",
+    "c9caf375-4525-4e79-b759-e43c6fb4548b": "observaciones",
+    "739a5b56-d997-4570-9666-7cc6022f21bb": "idFacultad",
+    "8646ffd0-31e0-46b5-afac-30a5ef0951d6": "recursos",
+    "dabdfd11-c96a-42e8-82d7-a57c9c2bbf41": "numRecurso",
+    "0cb084b4-6caa-4ec8-9846-c6cfe335741f": "tipo",
+    "e23d881b-a12a-4843-946d-809b37f0b892": "nombre",
+    "5270b583-ac8a-4805-94ba-d7739b7753c4": "salas",
+    "279604c1-ee24-4918-82cf-603b20eae426": "_id",
+    "e56cf375-c231-4a22-a91c-4356632f7313": "nombre",
+    "3b09c3b4-a4c4-4004-a7ae-f85ba33044ac": "descripcion",
+    "27774a02-144c-4c64-96f7-a4c600da808a": "facultades",
+    "4aeb55e9-dee0-421d-8209-25047b28977d": "base_datos_docu",
+    "2af92e17-3f10-49d1-b0ff-4d82fdbbe1b6": "fk_facultades._id_to_usuarios.idFacultad",
+    "9af3e960-197b-4a99-a7d6-f744f115e29a": "fk_usuarios._id_to_registrosModificaciones.idUsuario",
+    "d90bc334-6533-4cf7-b2bc-35efa7ea4031": "fk_salas._id_to_reservas.idSala",
+    "aa7f1da0-c25a-43f1-9943-245438029f3a": "fk_usuarios._id_to_reservas.idUsuario"
+  },
+  "definitions": {
+    "type": "definitions",
+    "properties": [],
+    "GUID": "edbe3d6c-b0b8-4bf8-81c4-d2eeee4077b9"
+  },
+  "polyglotDefinitions": {
+    "type": "polyglotDefinitions",
+    "properties": [],
+    "GUID": "8160d5a9-d593-4947-83c2-79951425c107"
+  },
+  "externalDefinitions": {
+    "type": "externalDefinitions",
+    "properties": [],
+    "GUID": "8946b11b-9d10-45dc-8639-0683df4b9770"
+  },
+  "sources": [],
+  "decorativeSymbols": [],
+  "businessGlossaries": [],
+  "businessGlossaryTerms": [],
+  "dbVersion": "v7.x",
+  "dbVendor": "MongoDB",
+  "appTarget": "MONGODB",
+  "creationTS": "2026-05-19T05:47:46.520Z",
+  "GUID": "c9f0fb13-beb8-4a70-a096-724d545e899e",
+  "isLineageEnabled": false,
+  "lastModifTS": "2026-05-19T06:16:12.199Z",
+  "persistenceSchemaVersion": "8",
+  "isCreatedByPlugin": true,
+  "pluginInformation": {
+    "pluginEngineVersion": "1.0.0"
+  },
+  "applicationInformation": {
+    "version": "8.11.2"
+  },
+  "settings": {
+    "centralPane": {
+      "dbLevel": {
+        "erd": [
+          {
+            "GUID": "eb4fb652-b8f2-4443-a936-a65d9e166cc4",
+            "x": 1385.5152198421629,
+            "y": 1351.0868094701245,
+            "width": 320,
+            "height": 230,
+            "color": {}
+          },
+          {
+            "GUID": "b3b9e1b4-882e-4412-83d9-c186c8b9f341",
+            "x": 1861.7395715896337,
+            "y": 1266.8568207440865,
+            "width": 327,
+            "height": 248,
+            "color": {}
+          },
+          {
+            "GUID": "05788d2a-ca1e-4a08-9d39-f24f30cf18ce",
+            "x": 1469.2378804960565,
+            "y": 1101.439684329201,
+            "width": 245,
+            "height": 158,
+            "color": {}
+          },
+          {
+            "GUID": "5270b583-ac8a-4805-94ba-d7739b7753c4",
+            "x": 1883.2119503945862,
+            "y": 920.5264937993256,
+            "width": 258,
+            "height": 230,
+            "color": {}
+          },
+          {
+            "GUID": "27774a02-144c-4c64-96f7-a4c600da808a",
+            "x": 1477.4859075535521,
+            "y": 919.8771138669749,
+            "width": 210,
+            "height": 86,
+            "color": {}
+          }
+        ],
+        "erdDefinitions": {
+          "erd": [],
+          "rootPath": [],
+          "entities": [],
+          "decorativeSymbols": []
+        },
+        "buckets": [
+          {
+            "x": 1321.5152198421629,
+            "y": 855.8771138669749,
+            "GUID": "4aeb55e9-dee0-421d-8209-25047b28977d"
+          }
+        ],
+        "collapsedNodes": [],
+        "activeRelationship": "",
+        "activeRelationshipFields": {
+          "childField": [],
+          "parentField": []
+        },
+        "selectedCollections": [],
+        "displayColorPicker": false,
+        "graphView": {
+          "erd": [],
+          "buckets": [],
+          "decorativeSymbols": [],
+          "forceLayout": true,
+          "defaultLinkLength": 300,
+          "options": []
+        },
+        "diagramViews": [],
+        "decorativeSymbols": [],
+        "nestedCollectionsLayout": "horizontal",
+        "options": [],
+        "relationshipUpdateDisabled": false
+      },
+      "collectionLevel": {},
+      "changed": false
+    },
+    "dtDiagram": {
+      "collapsedNodes": [],
+      "shouldDistributeCollections": false
+    }
+  },
+  "hackoladeMeta": {
+    "customPropertiesUpdated": true
+  }
+}
