@@ -237,7 +237,25 @@ async function seed() {
       tipoEvento: 'Academica',
       descripcion: 'Revisión de pensum',
       fechaCreacion: fechaCol(-1, 14)
-    }
+    },
+    // Datos históricos adicionales para enriquecer las agregaciones
+    // Ingeniería — semana pasada
+    { idSala: salaIng1._id, idUsuario: docIng._id, fechaInicio: fechaCol(-8, 8), fechaFin: fechaCol(-8, 10), estado: 'Activa', tipoEvento: 'Academica', fechaCreacion: fechaCol(-10, 8) },
+    { idSala: salaIng2._id, idUsuario: secIng._id, fechaInicio: fechaCol(-8, 14), fechaFin: fechaCol(-8, 16), estado: 'Activa', tipoEvento: 'Administrativa', fechaCreacion: fechaCol(-9, 9) },
+    { idSala: salaIng1._id, idUsuario: secIng._id, fechaInicio: fechaCol(-6, 9), fechaFin: fechaCol(-6, 11), estado: 'Cancelada', tipoEvento: 'Administrativa', fechaCreacion: fechaCol(-7, 8), ultimaModificacion: { idUsuarioResponsable: secIng._id, fecha: fechaCol(-6, 8) } },
+    { idSala: salaIng2._id, idUsuario: docIng._id, fechaInicio: fechaCol(-5, 7, 30), fechaFin: fechaCol(-5, 9), estado: 'Activa', tipoEvento: 'Academica', fechaCreacion: fechaCol(-6, 15) },
+    { idSala: salaIng1._id, idUsuario: docIng._id, fechaInicio: fechaCol(-3, 10), fechaFin: fechaCol(-3, 12), estado: 'Ajustada', tipoEvento: 'Academica', fechaCreacion: fechaCol(-5, 9), ultimaModificacion: { idUsuarioResponsable: secIng._id, fecha: fechaCol(-4, 10) } },
+    // Económicas — semana pasada
+    { idSala: salaEco1._id, idUsuario: docEco._id, fechaInicio: fechaCol(-9, 9), fechaFin: fechaCol(-9, 11), estado: 'Activa', tipoEvento: 'Academica', fechaCreacion: fechaCol(-10, 9) },
+    { idSala: salaEco1._id, idUsuario: secEco._id, fechaInicio: fechaCol(-7, 14), fechaFin: fechaCol(-7, 17), estado: 'Activa', tipoEvento: 'Administrativa', fechaCreacion: fechaCol(-8, 10) },
+    { idSala: salaEco1._id, idUsuario: docEco._id, fechaInicio: fechaCol(-5, 10), fechaFin: fechaCol(-5, 12), estado: 'Cancelada', tipoEvento: 'Academica', fechaCreacion: fechaCol(-6, 8), ultimaModificacion: { idUsuarioResponsable: secEco._id, fecha: fechaCol(-5, 9) } },
+    { idSala: salaEco1._id, idUsuario: secEco._id, fechaInicio: fechaCol(-2, 8), fechaFin: fechaCol(-2, 9, 30), estado: 'Activa', tipoEvento: 'Administrativa', fechaCreacion: fechaCol(-3, 14) },
+    // Comunicación — semana pasada
+    { idSala: salaCom1._id, idUsuario: docCom._id, fechaInicio: fechaCol(-9, 10), fechaFin: fechaCol(-9, 12), estado: 'Activa', tipoEvento: 'Academica', fechaCreacion: fechaCol(-10, 10) },
+    { idSala: salaCom2._id, idUsuario: secCom._id, fechaInicio: fechaCol(-7, 15), fechaFin: fechaCol(-7, 17), estado: 'Activa', tipoEvento: 'Administrativa', fechaCreacion: fechaCol(-8, 11) },
+    { idSala: salaCom1._id, idUsuario: docCom._id, fechaInicio: fechaCol(-4, 8), fechaFin: fechaCol(-4, 10), estado: 'Activa', tipoEvento: 'Academica', fechaCreacion: fechaCol(-5, 8) },
+    { idSala: salaCom2._id, idUsuario: secCom._id, fechaInicio: fechaCol(-2, 13), fechaFin: fechaCol(-2, 15), estado: 'Ajustada', tipoEvento: 'Administrativa', fechaCreacion: fechaCol(-4, 9), ultimaModificacion: { idUsuarioResponsable: secCom._id, fecha: fechaCol(-3, 10) } },
+    { idSala: salaCom1._id, idUsuario: docCom._id, fechaInicio: fechaCol(2, 9), fechaFin: fechaCol(2, 11), estado: 'Activa', tipoEvento: 'Academica', fechaCreacion: fechaCol(-1, 9) }
   ]);
 
   // ── Registros de modificaciones ───────────────────────────────────────────────
@@ -286,7 +304,7 @@ async function seed() {
   console.log('✓ Facultades:', 3);
   console.log('✓ Usuarios:', 6);
   console.log('✓ Salas:', 6);
-  console.log('✓ Reservas:', reservas.length);
+  console.log('✓ Reservas:', reservas.length); // 22 reservas
   console.log('✓ Registros de auditoría:', 3);
   console.log('\nDatos de prueba cargados exitosamente en la base de datos.');
 

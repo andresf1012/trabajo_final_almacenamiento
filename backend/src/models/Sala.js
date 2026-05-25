@@ -15,4 +15,9 @@ const salaSchema = new mongoose.Schema({
   recursos: [recursoSchema]
 }, { collection: 'salas', versionKey: false });
 
+// Índice único sobre el código de sala para garantizar no duplicados
+salaSchema.index({ codigoSala: 1 }, { unique: true });
+// Índice para listar salas por facultad y filtrar por estado
+salaSchema.index({ idFacultad: 1, estado: 1 });
+
 module.exports = mongoose.model('Sala', salaSchema);

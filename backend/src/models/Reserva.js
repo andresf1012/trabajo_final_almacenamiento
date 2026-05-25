@@ -17,4 +17,13 @@ const reservaSchema = new mongoose.Schema({
   ultimaModificacion: { type: ultimaModificacionSchema, default: null }
 }, { collection: 'reservas', versionKey: false });
 
+// Índice compuesto para detección eficiente de solapamientos por sala
+reservaSchema.index({ idSala: 1, fechaInicio: 1, fechaFin: 1 });
+// Índice para consultas de reservas por usuario
+reservaSchema.index({ idUsuario: 1 });
+// Índice para filtrar por estado (Activa/Cancelada/Ajustada)
+reservaSchema.index({ estado: 1 });
+// Índice para reportes por rango de fechas
+reservaSchema.index({ fechaInicio: -1 });
+
 module.exports = mongoose.model('Reserva', reservaSchema);

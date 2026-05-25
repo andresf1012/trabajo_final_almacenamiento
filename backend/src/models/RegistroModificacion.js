@@ -16,4 +16,11 @@ const registroModificacionSchema = new mongoose.Schema({
   datosModificacion: { type: datosModificacionSchema, required: true }
 }, { collection: 'registrosModificaciones', versionKey: false });
 
+// Índice para recuperar el historial completo de un documento específico
+registroModificacionSchema.index({ idDocumentoModificado: 1 });
+// Índice para auditoría por usuario
+registroModificacionSchema.index({ idUsuario: 1 });
+// Índice cronológico descendente para mostrar eventos más recientes primero
+registroModificacionSchema.index({ fecha: -1 });
+
 module.exports = mongoose.model('RegistroModificacion', registroModificacionSchema);
