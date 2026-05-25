@@ -1,21 +1,9 @@
 services:
-  mongo:
-    image: mongo:7
-    container_name: mongodb-reservas
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo_data:/data/db
-
   backend:
     build: .
     container_name: backend-reservas
     ports:
       - "3000:3000"
     environment:
-      - MONGODB_URI=mongodb://mongo:27017/base_datos_docu
-    depends_on:
-      - mongo
-
-volumes:
-  mongo_data:
+      - MONGODB_URI=mongodb+srv://espitiaa3_db_user:TkJQVByR0BjIOlzi@almacenamiento.hg1ffyc.mongodb.net/base_datos_docu?appName=almacenamiento
+      - PORT=3000
