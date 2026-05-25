@@ -9,10 +9,8 @@ const usuarioSchema = new mongoose.Schema({
   idFacultad: { type: mongoose.Schema.Types.ObjectId, ref: 'Facultad', required: true }
 }, { collection: 'usuarios', versionKey: false });
 
-// Índices únicos para evitar duplicados de correo y código institucional
-usuarioSchema.index({ email: 1 }, { unique: true });
-usuarioSchema.index({ codigoUsuario: 1 }, { unique: true });
-// Índice para consultas por facultad y rol
+// Índice compuesto para consultas por facultad y rol
+// (email y codigoUsuario ya tienen índice único declarado en el schema)
 usuarioSchema.index({ idFacultad: 1, rol: 1 });
 
 module.exports = mongoose.model('Usuario', usuarioSchema);
